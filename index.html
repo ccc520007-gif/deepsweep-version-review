@@ -69,6 +69,14 @@ code{background:#f7f9fb;border:1px solid #e9edf2;border-radius:6px;padding:2px 6
     document.open();
     document.write(html);
     document.close();
+
+    var sec = params.get('s');
+    if (sec) {
+      setTimeout(function(){
+        var el = document.getElementById(sec);
+        if (el) el.scrollIntoView();
+      }, 150);
+    }
   }
   main();
 })();
