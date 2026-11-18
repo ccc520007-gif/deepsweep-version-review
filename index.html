@@ -72,10 +72,13 @@ code{background:#f7f9fb;border:1px solid #e9edf2;border-radius:6px;padding:2px 6
 
     var sec = params.get('s');
     if (sec) {
-      setTimeout(function(){
+      var jump = function(){
         var el = document.getElementById(sec);
-        if (el) el.scrollIntoView();
-      }, 150);
+        if (el) el.scrollIntoView({block: 'start'});
+      };
+      setTimeout(jump, 200);
+      setTimeout(jump, 700);
+      setTimeout(jump, 1400);
     }
   }
   main();
