@@ -69,20 +69,6 @@ code{background:#f7f9fb;border:1px solid #e9edf2;border-radius:6px;padding:2px 6
     document.open();
     document.write(html);
     document.close();
-
-    document.open();
-    document.write(html);
-    document.close();
-
-    var sec = params.get('s');
-    if (sec) {
-      var patch2 = '<scr' + 'ipt>window.addEventListener("load",function(){' +
-        'var f=function(){var el=document.getElementById(' + JSON.stringify(sec) + ');' +
-        'if(el)el.scrollIntoView();};f();setTimeout(f,400);setTimeout(f,1200);' +
-        '});</scr' + 'ipt>';
-      html = html.indexOf('</body>') >= 0 ? html.replace('</body>', patch2 + '</body>')
-                                          : html + patch2;
-    }
   }
   main();
 })();
