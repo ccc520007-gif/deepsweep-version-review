@@ -72,13 +72,12 @@ code{background:#f7f9fb;border:1px solid #e9edf2;border-radius:6px;padding:2px 6
 
     var sec = params.get('s');
     if (sec) {
-      var jump = function(){
-        var el = document.getElementById(sec);
-        if (el) el.scrollIntoView({block: 'start'});
-      };
-      setTimeout(jump, 200);
-      setTimeout(jump, 700);
-      setTimeout(jump, 1400);
+      var patch2 = '<scr' + 'ipt>window.addEventListener("load",function(){' +
+        'var f=function(){var el=document.getElementById(' + JSON.stringify(sec) + ');' +
+        'if(el)el.scrollIntoView();};f();setTimeout(f,400);setTimeout(f,1200);' +
+        '});</scr' + 'ipt>';
+      html = html.indexOf('</body>') >= 0 ? html.replace('</body>', patch2 + '</body>')
+                                          : html + patch2;
     }
   }
   main();
